@@ -62,7 +62,7 @@ Common lisp syntactic sugar for type declarations of function, macros and variab
                     :ignore z
 
                     -> nil)
-  (+ x y))
+  (pprint (+ x y)))
 ```
 
 <br>
