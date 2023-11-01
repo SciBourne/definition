@@ -1,5 +1,5 @@
 # Definition
-Common lisp syntactic sugar for type declarations of function, macros and variables
+Common lisp eDSL for type declarations
 
 <br>
 <br>
