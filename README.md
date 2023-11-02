@@ -57,7 +57,7 @@ Common lisp eDSL for type declarations
                      y 'fixnum
                      z 'fixnum)
 
-                    :optimize ((suffety 3)
+                    :optimize ((safety 3)
                                (debug 3))
                     :ignore z
 
