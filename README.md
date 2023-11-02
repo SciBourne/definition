@@ -13,6 +13,7 @@ Common lisp eDSL for type declarations
     * [Defvar](#defvar)
   * [Function and macros](#function-and-macros)
     * [Defun](#defun)
+    * [Defgeneric](#defgeneric)
     * [Defmethod](#defmethod)
     * [Defmacro](#defmacro)
   * [Anonymous function](#anonymous-function)
@@ -66,6 +67,8 @@ Common lisp eDSL for type declarations
 ```
 
 <br>
+
+#### Defgeneric
 
 #### Defmethod
 
