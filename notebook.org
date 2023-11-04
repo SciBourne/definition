@@ -1,5 +1,6 @@
-#+title: Записная книжка проекта
 #+author: SciBourne
+#+title: Definition
+Common Lisp eDSL for type declarations
 
 
 #+PROPERTY: results silent
@@ -10,13 +11,12 @@
 #+STARTUP: hidestars
 #+STARTUP: latexpreview
 
-
-
-
-* Definition
-Common Lisp eDSL for type declarations
-
 #+html:<br><br>
+
+
+
+
+
 
 
 * Load system
