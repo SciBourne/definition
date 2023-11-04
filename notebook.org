@@ -62,7 +62,7 @@ From local project $a^2 = b$
 
 * Examples
 :PROPERTIES:
-:header-args: :exports both
+:header-args: :exports both value
 :END:
 
 #+html:<br>
