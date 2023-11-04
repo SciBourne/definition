@@ -8,7 +8,8 @@ Common Lisp eDSL for type declarations
 
 
 #+PROPERTY: results silent
-#+PROPERTY: header-args :results value scalar :exports both
+#+PROPERTY: header-args :results value scalar
+#+PROPERTY: header-args :exports both
 
 #+STARTUP: showall
 #+STARTUP: indent
@@ -21,6 +22,10 @@ Common Lisp eDSL for type declarations
 
 
 * Table of contents
+:PROPERTIES:
+:EXPORTS: none
+:END:
+
 - [[Install]]
 - [[Examples]]
   - [[Special binding]]
@@ -39,6 +44,7 @@ Common Lisp eDSL for type declarations
     - [[Labels]]
     - [[Macrolet]]
 - [[API reference]]
+
 
 #+html:<br><br>
 
@@ -150,6 +156,8 @@ Coming soon...
 :  (DECLAIM (FTYPE NIL (VALUES &OPTIONAL) FUNC-3))
 :  (DEFUN FUNC-3 () (PPRINT "Not return")))
 : T
+
+#+html:<br><br>
 
 
 
