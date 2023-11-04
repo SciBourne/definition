@@ -16,18 +16,31 @@ Common Lisp eDSL for type declarations
 
 
 
+* Table of contents
+- [[#install][Install]]
+- [[Examples]](#examples)
+- [[API reference]]
+
+#+html:<br><br>
 
 
 
-* Load system
+* Install
 
 #+begin_src lisp
   (ql:quickload :definition)
 #+end_src
 
+#+html:<br><br>
+
+
 
 
 * Examples
+
+#+html:<br>
+
+
 
 ** Defun
 
@@ -49,6 +62,9 @@ Common Lisp eDSL for type declarations
 :                     (BLOCK FUNC-1 (+ 1 2 3)))))
 : T
 
+#+html:<br>
+
+
 
 #+begin_src lisp
   (macroexpand
@@ -66,6 +82,9 @@ Common Lisp eDSL for type declarations
 :                     (BLOCK FUNC-2 (+ X Y Z)))))
 : T
 
+#+html:<br>
+
+
 
 *** With declaration
 
@@ -81,3 +100,7 @@ Common Lisp eDSL for type declarations
 :  (DECLAIM (FTYPE NIL (VALUES &OPTIONAL) FUNC-3))
 :  (DEFUN FUNC-3 () (PPRINT "Not return")))
 : T
+
+
+* API reference
+Coming soon...
