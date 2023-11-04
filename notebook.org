@@ -9,7 +9,7 @@ Common Lisp eDSL for type declarations
 
 #+PROPERTY: results silent
 #+PROPERTY: header-args :results value scalar
-#+PROPERTY: header-args+ :exports both value
+#+PROPERTY: header-args+ :exports both scalar
 
 #+STARTUP: showall
 #+STARTUP: indent
@@ -61,9 +61,6 @@ From local project $a^2 = b$
 
 
 * Examples
-:PROPERTIES:
-:header-args: :exports both scalar
-:END:
 
 #+html:<br>
 
