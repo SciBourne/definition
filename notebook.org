@@ -100,7 +100,7 @@ Coming soon...
 
 **** Without declarations (default)
 
-#+begin_src lisp
+#+begin_src lisp :exports both value
   (macroexpand
 
    '(def:%defun func-1 ()
