@@ -8,8 +8,7 @@ Common Lisp eDSL for type declarations
 
 
 #+PROPERTY: results silent
-#+PROPERTY: header-args :results value scalar
-#+PROPERTY: header-args :exports both value
+#+PROPERTY: header-args :exports both value :results value scalar
 
 #+STARTUP: showall
 #+STARTUP: indent
@@ -100,7 +99,7 @@ Coming soon...
 
 **** Without declarations (default)
 
-#+begin_src lisp :exports both value
+#+begin_src lisp
   (macroexpand
 
    '(def:%defun func-1 ()
