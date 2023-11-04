@@ -8,8 +8,8 @@ Common Lisp eDSL for type declarations
 
 
 #+PROPERTY: results silent
-#+PROPERTY: header-args  :results value scalar
-#+PROPERTY: header-args+ :exports both
+#+PROPERTY: header-args :results value scalar
+#+PROPERTY: header-args+ :exports both value
 
 #+STARTUP: showall
 #+STARTUP: indent
