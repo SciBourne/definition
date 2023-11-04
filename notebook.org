@@ -8,7 +8,7 @@ Common Lisp eDSL for type declarations
 
 
 #+PROPERTY: results silent
-#+PROPERTY: header-args :results value scalar
+#+PROPERTY: header-args :results value scalar :exports both
 
 #+STARTUP: showall
 #+STARTUP: indent
@@ -46,8 +46,7 @@ Common Lisp eDSL for type declarations
 
 * Install
 
-[[Table of contents][░  Go up  ░]]
-
+From local project $a^2 = b$
 #+begin_src lisp
   (ql:quickload :definition)
 #+end_src
@@ -59,19 +58,43 @@ Common Lisp eDSL for type declarations
 
 * Examples
 
-[[Table of contents][░  Go up  ░]]
+#+html:<br>
+
+** Special binding
+
+*** Defconstant
+Coming soon...
 
 #+html:<br>
 
 
 
-** Defun
+*** Defparameter
+Coming soon...
 
-[[Table of contents][░  Go up  ░]]
+#+html:<br>
 
-*** Without declarations (default)
 
-[[Table of contents][░  Go up  ░]]
+
+*** Defvar
+Coming soon...
+
+#+html:<br><br>
+
+
+
+
+** Function and macros
+
+*** Lambda
+Coming soon...
+
+#+html:<br>
+
+
+*** Defun
+
+**** Without declarations (default)
 
 #+begin_src lisp
   (macroexpand
@@ -113,9 +136,7 @@ Common Lisp eDSL for type declarations
 
 
 
-*** With declaration
-
-[[Table of contents][░  Go up  ░]]
+**** With declaration
 
 #+begin_src lisp
   (macroexpand
@@ -131,8 +152,59 @@ Common Lisp eDSL for type declarations
 : T
 
 
+
+*** Defmethod
+Coming soon...
+
+#+html:<br>
+
+
+
+*** Defmacro
+Coming soon...
+
+#+html:<br><br>
+
+
+
+
+** Lexical binding
+
+*** Let
+Coming soon...
+
+#+html:<br>
+
+
+
+*** Prog
+Coming soon...
+
+#+html:<br>
+
+
+
+*** Flet
+Coming soon...
+
+#+html:<br>
+
+
+
+*** Labels
+Coming soon...
+
+#+html:<br>
+
+
+
+*** Macrolet
+Coming soon...
+
+#+html:<br><br>
+
+
+
+
 * API reference
-
-[[Table of contents][░  Go up  ░]]
-
 Coming soon...
