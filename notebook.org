@@ -1,0 +1,78 @@
+#+title: Записная книжка проекта
+#+author: SciBourne
+
+
+#+PROPERTY: results silent
+#+PROPERTY: header-args :results value scalar
+
+#+STARTUP: showall
+#+STARTUP: indent
+#+STARTUP: hidestars
+#+STARTUP: latexpreview
+
+
+
+
+
+* Load system
+
+#+begin_src lisp
+  (ql:quickload :definition)
+#+end_src
+
+
+
+* Examples
+
+** Defun
+
+*** Without declarations (default)
+
+#+begin_src lisp
+  (macroexpand
+
+   '(def:%defun func-1 ()
+     (+ 1 2 3)))
+#+end_src
+
+#+RESULTS:
+: (PROGN
+:  (EVAL-WHEN (:COMPILE-TOPLEVEL) (SB-C:%COMPILER-DEFUN 'FUNC-1 T NIL NIL))
+:  (SB-IMPL::%DEFUN 'FUNC-1
+:                   (SB-INT:NAMED-LAMBDA FUNC-1
+:                       NIL
+:                     (BLOCK FUNC-1 (+ 1 2 3)))))
+: T
+
+
+#+begin_src lisp
+  (macroexpand
+
+   '(def:%defun func-2 (x y &optional (z 0))
+     (+ x y z)))
+#+end_src
+
+#+RESULTS:
+: (PROGN
+:  (EVAL-WHEN (:COMPILE-TOPLEVEL) (SB-C:%COMPILER-DEFUN 'FUNC-2 T NIL NIL))
+:  (SB-IMPL::%DEFUN 'FUNC-2
+:                   (SB-INT:NAMED-LAMBDA FUNC-2
+:                       (X Y &OPTIONAL (Z 0))
+:                     (BLOCK FUNC-2 (+ X Y Z)))))
+: T
+
+
+*** With declaration
+
+#+begin_src lisp
+  (macroexpand
+
+   '(def:%defun func-3 (() -> nil)
+     (pprint "Not return")))
+#+end_src
+
+#+RESULTS:
+: (PROGN
+:  (DECLAIM (FTYPE NIL (VALUES &OPTIONAL) FUNC-3))
+:  (DEFUN FUNC-3 () (PPRINT "Not return")))
+: T
