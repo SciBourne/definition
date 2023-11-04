@@ -22,10 +22,6 @@ Common Lisp eDSL for type declarations
 
 
 * Table of contents
-:PROPERTY:
-:EXPORTS: both
-:END:
-
 - [[Install]]
 - [[Examples]]
   - [[Special binding]]
