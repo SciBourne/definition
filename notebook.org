@@ -15,12 +15,14 @@ Common Lisp eDSL for type declarations
 #+STARTUP: hidestars
 #+STARTUP: latexpreview
 
+#+EXPORT_EXCLUDE_TAGS: emacs_only
+
 #+html:<br><br>
 
 
 
 
-* Table of contents
+* Table of contents                                           :emacs_only:
 - [[Install]]
 - [[Examples]]
   - [[Special binding]]
