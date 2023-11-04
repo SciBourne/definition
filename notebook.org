@@ -22,8 +22,8 @@ Common Lisp eDSL for type declarations
 
 
 * Table of contents
-:PROPERTIES:
-:EXPORTS: none
+:PROPERTY:
+:EXPORTS: both
 :END:
 
 - [[Install]]
