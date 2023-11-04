@@ -1,6 +1,10 @@
 #+author: SciBourne
+
+
+
 #+title: Definition
 Common Lisp eDSL for type declarations
+
 
 
 #+PROPERTY: results silent
@@ -17,8 +21,23 @@ Common Lisp eDSL for type declarations
 
 
 * Table of contents
-- [[#install][Install]]
-- [[Examples]](#examples)
+- [[Install]]
+- [[Examples]]
+  - [[Special binding]]
+    - [[Defconstant]]
+    - [[Defparameter]]
+    - [[Defvar]]
+  - [[Function and macros]]
+    - [[Lambda]]
+    - [[Defun]]
+    - [[Defmethod]]
+    - [[Defmacro]]
+  - [[Lexical binding]]
+    - [[Let]]
+    - [[Prog]]
+    - [[Flet]]
+    - [[Labels]]
+    - [[Macrolet]]
 - [[API reference]]
 
 #+html:<br><br>
@@ -26,6 +45,8 @@ Common Lisp eDSL for type declarations
 
 
 * Install
+
+[[Table of contents][░  Go up  ░]]
 
 #+begin_src lisp
   (ql:quickload :definition)
@@ -38,13 +59,19 @@ Common Lisp eDSL for type declarations
 
 * Examples
 
+[[Table of contents][░  Go up  ░]]
+
 #+html:<br>
 
 
 
 ** Defun
 
+[[Table of contents][░  Go up  ░]]
+
 *** Without declarations (default)
+
+[[Table of contents][░  Go up  ░]]
 
 #+begin_src lisp
   (macroexpand
@@ -88,6 +115,8 @@ Common Lisp eDSL for type declarations
 
 *** With declaration
 
+[[Table of contents][░  Go up  ░]]
+
 #+begin_src lisp
   (macroexpand
 
@@ -103,4 +132,7 @@ Common Lisp eDSL for type declarations
 
 
 * API reference
+
+[[Table of contents][░  Go up  ░]]
+
 Coming soon...
