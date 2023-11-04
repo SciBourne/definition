@@ -13,6 +13,11 @@
 
 
 
+* Definition
+Common Lisp eDSL for type declarations
+
+#+html:<br><br>
+
 
 * Load system
 
