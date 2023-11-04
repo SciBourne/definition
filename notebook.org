@@ -9,7 +9,6 @@ Common Lisp eDSL for type declarations
 
 #+PROPERTY: results silent
 #+PROPERTY: header-args :results value scalar
-#+PROPERTY: header-args+ :exports results
 
 #+STARTUP: showall
 #+STARTUP: indent
@@ -19,6 +18,32 @@ Common Lisp eDSL for type declarations
 #+EXPORT_EXCLUDE_TAGS: emacs_only
 
 #+html:<br><br>
+
+
+
+
+
+* Table of contents
+- [[#install][Install]]
+- [[#examples][Examples]]
+  - [[#special-binding][Special binding]]
+    - [[#defconstant][Defconstant]]
+    - [[#defparameter][Defparameter]]
+    - [[#defvar][Defvar]]
+  - [[#function-and-macros][Function and macros]]
+    - [[#lambda][Lambda]]
+    - [[#defun][Defun]]
+    - [[#defmethod][Defmethod]]
+    - [[#defmacro][Defmacro]]
+  - [[#lexical-binding][Lexical binding]]
+    - [[#let][Let]]
+    - [[#prog][Prog]]
+    - [[#flet][Flet]]
+    - [[#labels][Labels]]
+    - [[#macrolet][Macrolet]]
+- [[#api-reference][API reference]]
+
+
 
 
 
@@ -50,7 +75,7 @@ Common Lisp eDSL for type declarations
 
 * Install
 
-From local project $a^2 = b$
+From local project (for example: =~/quicklisp=)
 #+begin_src lisp
   (ql:quickload :definition)
 #+end_src
@@ -67,21 +92,18 @@ From local project $a^2 = b$
 ** Special binding
 
 *** Defconstant
-Coming soon...
 
 #+html:<br>
 
 
 
 *** Defparameter
-Coming soon...
 
 #+html:<br>
 
 
 
 *** Defvar
-Coming soon...
 
 #+html:<br><br>
 
@@ -91,7 +113,6 @@ Coming soon...
 ** Function and macros
 
 *** Lambda
-Coming soon...
 
 #+html:<br>
 
@@ -100,7 +121,7 @@ Coming soon...
 
 **** Without declarations (default)
 
-#+begin_src lisp
+#+begin_src lisp :exports both
   (macroexpand
 
    '(def:%defun func-1 ()
@@ -120,7 +141,7 @@ Coming soon...
 
 
 
-#+begin_src lisp
+#+begin_src lisp :exports both
   (macroexpand
 
    '(def:%defun func-2 (x y &optional (z 0))
@@ -142,7 +163,7 @@ Coming soon...
 
 **** With declaration
 
-#+begin_src lisp
+#+begin_src lisp :exports both
   (macroexpand
 
    '(def:%defun func-3 (() -> nil)
@@ -160,14 +181,12 @@ Coming soon...
 
 
 *** Defmethod
-Coming soon...
 
 #+html:<br>
 
 
 
 *** Defmacro
-Coming soon...
 
 #+html:<br><br>
 
@@ -177,35 +196,30 @@ Coming soon...
 ** Lexical binding
 
 *** Let
-Coming soon...
 
 #+html:<br>
 
 
 
 *** Prog
-Coming soon...
 
 #+html:<br>
 
 
 
 *** Flet
-Coming soon...
 
 #+html:<br>
 
 
 
 *** Labels
-Coming soon...
 
 #+html:<br>
 
 
 
 *** Macrolet
-Coming soon...
 
 #+html:<br><br>
 
