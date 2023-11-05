@@ -246,6 +246,146 @@ Import names into your package:
 
 
 
+#+begin_src lisp :exports both
+  (macroexpand
+
+   '(%defun my-function ((x 'fixnum y 'fixnum &optional z '(or fixnum null))
+                         -> '(or fixnum null))
+     (when z (+ x y))))
+#+end_src
+
+#+RESULTS:
+#+begin_example
+(PROGN
+ (DECLAIM
+  (FTYPE
+   (FUNCTION (FIXNUM FIXNUM &OPTIONAL (OR FIXNUM NULL))
+    (VALUES (OR FIXNUM NULL) &OPTIONAL))
+   MY-FUNCTION))
+ (DEFUN MY-FUNCTION (X Y &OPTIONAL Z)
+   (DECLARE (TYPE FIXNUM X)
+            (TYPE FIXNUM Y)
+            (TYPE (OR FIXNUM NULL) Z))
+   (WHEN Z (+ X Y))))
+T
+#+end_example
+
+#+html:<br><br>
+
+
+#+begin_src lisp :exports both
+  (macroexpand
+
+   '(%defun my-function ((x 'fixnum y 'fixnum &aux (z (* x y)) 'fixnum)
+                         -> 'fixnum)
+     (+ x y z)))
+#+end_src
+
+#+RESULTS:
+: (PROGN
+:  (DECLAIM
+:   (FTYPE (FUNCTION (FIXNUM FIXNUM) (VALUES FIXNUM &OPTIONAL)) MY-FUNCTION))
+:  (DEFUN MY-FUNCTION (X Y &AUX (Z (* X Y)))
+:    (DECLARE (TYPE FIXNUM X)
+:             (TYPE FIXNUM Y)
+:             (TYPE FIXNUM Z))
+:    (+ X Y Z)))
+: T
+
+#+html:<br><br>
+
+
+
+#+begin_src lisp :exports both
+  (macroexpand
+
+   '(%defun my-function ((&optional
+                          x '(or fixnum null)
+                          (y 0) 'fixnum
+                          (z 1 z-supplied-p) 'fixnum)
+
+                         -> '(or fixnum null))
+     (when z (+ x y))))
+#+end_src
+
+#+RESULTS:
+#+begin_example
+(PROGN
+ (DECLAIM
+  (FTYPE
+   (FUNCTION (&OPTIONAL (OR FIXNUM NULL) FIXNUM FIXNUM)
+    (VALUES (OR FIXNUM NULL) &OPTIONAL))
+   MY-FUNCTION))
+ (DEFUN MY-FUNCTION (&OPTIONAL X (Y 0) (Z 1 Z-SUPPLIED-P))
+   (DECLARE (TYPE (OR FIXNUM NULL) X)
+            (TYPE FIXNUM Y)
+            (TYPE FIXNUM Z)
+            (TYPE BOOLEAN Z-SUPPLIED-P))
+   (WHEN Z (+ X Y))))
+T
+#+end_example
+
+#+html:<br><br>
+
+
+
+#+begin_src lisp :exports both
+  (macroexpand
+
+   '(%defun my-function ((a 'fixnum
+                          b 'fixnum
+
+                          &rest
+                          rest-plist  ; always T
+
+                          &key
+                          c '(or fixnum null)
+                          (d 0) 'fixnum
+                          (e 1 e-supplied-p) 'fixnum
+                          ((:f f)) '(or fixnum null)
+                          ((:g g) 2) 'fixnum
+                          ((:h h) 3 h-supplied-p) 'fixnum
+
+                          &allow-other-keys)
+
+                         -> 'cons)
+     (list a b c e f g h rest
+      (list e-supplied-p h-supplied-p))))
+#+end_src
+
+#+RESULTS:
+#+begin_example
+(PROGN
+ (DECLAIM
+  (FTYPE
+   (FUNCTION
+    (FIXNUM FIXNUM &REST T &KEY (:C (OR FIXNUM NULL)) (:D FIXNUM) (:E FIXNUM)
+     (:F (OR FIXNUM NULL)) (:G FIXNUM) (:H FIXNUM) &ALLOW-OTHER-KEYS)
+    (VALUES CONS &OPTIONAL))
+   MY-FUNCTION))
+ (DEFUN MY-FUNCTION
+        (A B
+         &REST REST-PLIST
+         &KEY C (D 0) (E 1 E-SUPPLIED-P) ((:F F)) ((:G G) 2)
+         ((:H H) 3 H-SUPPLIED-P) &ALLOW-OTHER-KEYS)
+   (DECLARE (TYPE FIXNUM A)
+            (TYPE FIXNUM B)
+            (TYPE (OR FIXNUM NULL) C)
+            (TYPE FIXNUM D)
+            (TYPE FIXNUM E)
+            (TYPE (OR FIXNUM NULL) F)
+            (TYPE FIXNUM G)
+            (TYPE FIXNUM H)
+            (TYPE BOOLEAN E-SUPPLIED-P)
+            (TYPE BOOLEAN H-SUPPLIED-P))
+   (LIST A B C E F G H REST (LIST E-SUPPLIED-P H-SUPPLIED-P))))
+T
+#+end_example
+
+#+html:<br><br>
+
+
+
 
 *** Defmethod
 
