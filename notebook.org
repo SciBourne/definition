@@ -75,19 +75,21 @@ Common Lisp eDSL for type declarations
 
 * Install
 
-Clone this package into local project (by default: =~/quicklisp/local-projects/=)
+Clone this package into your local project dir (by default: =~/quicklisp/local-projects/=)
 #+begin_src shell
   git clone https://github.com/SciBourne/definition.git
 #+end_src
 
-Load and enter the package namespace:
+Check:
 #+begin_src lisp
   (ql:quickload :definition)
-  (in-package   :definition)
 #+end_src
 
-#+RESULTS:
-: #<PACKAGE "DEFINITION">
+Import names into your package:
+#+begin_src lisp
+  (defpackage :my-package :use :cl :def)
+  (in-package :my-package)
+#+end_src
 
 #+html:<br><br>
 
@@ -133,17 +135,17 @@ Load and enter the package namespace:
 #+begin_src lisp :exports both
   (macroexpand
 
-   '(%defun func-1 ()
+   '(%defun my-function ()
      (+ 1 2 3)))
 #+end_src
 
 #+RESULTS:
 : (PROGN
-:  (EVAL-WHEN (:COMPILE-TOPLEVEL) (SB-C:%COMPILER-DEFUN 'FUNC-1 T NIL NIL))
-:  (SB-IMPL::%DEFUN 'FUNC-1
-:                   (SB-INT:NAMED-LAMBDA FUNC-1
+:  (EVAL-WHEN (:COMPILE-TOPLEVEL) (SB-C:%COMPILER-DEFUN 'MY-FUNCTION T NIL NIL))
+:  (SB-IMPL::%DEFUN 'MY-FUNCTION
+:                   (SB-INT:NAMED-LAMBDA MY-FUNCTION
 :                       NIL
-:                     (BLOCK FUNC-1 (+ 1 2 3)))))
+:                     (BLOCK MY-FUNCTION (+ 1 2 3)))))
 : T
 
 #+html:<br>
@@ -153,17 +155,17 @@ Load and enter the package namespace:
 #+begin_src lisp :exports both
   (macroexpand
 
-   '(%defun func-2 (x y &optional (z 0))
+   '(%defun my-function (x y &optional (z 0))
      (+ x y z)))
 #+end_src
 
 #+RESULTS:
 : (PROGN
-:  (EVAL-WHEN (:COMPILE-TOPLEVEL) (SB-C:%COMPILER-DEFUN 'FUNC-2 T NIL NIL))
-:  (SB-IMPL::%DEFUN 'FUNC-2
-:                   (SB-INT:NAMED-LAMBDA FUNC-2
+:  (EVAL-WHEN (:COMPILE-TOPLEVEL) (SB-C:%COMPILER-DEFUN 'MY-FUNCTION T NIL NIL))
+:  (SB-IMPL::%DEFUN 'MY-FUNCTION
+:                   (SB-INT:NAMED-LAMBDA MY-FUNCTION
 :                       (X Y &OPTIONAL (Z 0))
-:                     (BLOCK FUNC-2 (+ X Y Z)))))
+:                     (BLOCK MY-FUNCTION (+ X Y Z)))))
 : T
 
 #+html:<br>
@@ -175,17 +177,73 @@ Load and enter the package namespace:
 #+begin_src lisp :exports both
   (macroexpand
 
-   '(%defun func-3 (() -> nil)
+   '(%defun my-function (() -> nil)
      (pprint "Not return")))
 #+end_src
 
 #+RESULTS:
 : (PROGN
-:  (DECLAIM (FTYPE (FUNCTION NIL (VALUES &OPTIONAL)) FUNC-3))
-:  (DEFUN FUNC-3 () (PPRINT "Not return")))
+:  (DECLAIM (FTYPE (FUNCTION NIL (VALUES &OPTIONAL)) MY-FUNCTION))
+:  (DEFUN MY-FUNCTION () (PPRINT "Not return")))
 : T
 
 #+html:<br><br>
+
+
+
+#+begin_src lisp :exports both
+  (macroexpand
+
+   '(%defun my-function (() -> 'null)
+     (format t "Return nil")))
+#+end_src
+
+#+RESULTS:
+: (PROGN
+:  (DECLAIM (FTYPE (FUNCTION NIL (VALUES NULL &OPTIONAL)) MY-FUNCTION))
+:  (DEFUN MY-FUNCTION () (FORMAT T "Return nil")))
+: T
+
+#+html:<br><br>
+
+
+
+#+begin_src lisp :exports both
+  (macroexpand
+
+   '(%defun my-function ((any-arg T) -> T)
+     any-arg))
+#+end_src
+
+#+RESULTS:
+: (PROGN
+:  (DECLAIM (FTYPE (FUNCTION (T) *) MY-FUNCTION))
+:  (DEFUN MY-FUNCTION (ANY-ARG) (DECLARE (TYPE T ANY-ARG)) ANY-ARG))
+: T
+
+#+html:<br><br>
+
+
+
+#+begin_src lisp :exports both
+  (macroexpand
+
+   '(%defun my-function ((x 'fixnum y 'fixnum) -> 'fixnum)
+     (+ x y )))
+#+end_src
+
+#+RESULTS:
+: (PROGN
+:  (DECLAIM
+:   (FTYPE (FUNCTION (FIXNUM FIXNUM) (VALUES FIXNUM &OPTIONAL)) MY-FUNCTION))
+:  (DEFUN MY-FUNCTION (X Y)
+:    (DECLARE (TYPE FIXNUM X)
+:             (TYPE FIXNUM Y))
+:    (+ X Y)))
+: T
+
+#+html:<br><br>
+
 
 
 
