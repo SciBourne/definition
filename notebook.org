@@ -23,7 +23,7 @@ Common Lisp eDSL for type declarations
 
 
 
-* Table of contents
+* Table of contents    :github_only:
 - [[#install][Install]]
 - [[#examples][Examples]]
   - [[#special-binding][Special binding]]
@@ -43,12 +43,12 @@ Common Lisp eDSL for type declarations
     - [[#macrolet][Macrolet]]
 - [[#api-reference][API reference]]
 
+#+html:<br><br>
 
 
 
 
-
-* Table of contents                                           :emacs_only:
+* Table of contents    :emacs_only:
 - [[Install]]
 - [[Examples]]
   - [[Special binding]]
@@ -75,10 +75,19 @@ Common Lisp eDSL for type declarations
 
 * Install
 
-From local project (for example: =~/quicklisp=)
+Clone this package into local project (by default: =~/quicklisp/local-projects/=)
+#+begin_src shell
+  git clone https://github.com/SciBourne/definition.git
+#+end_src
+
+Load and enter the package namespace:
 #+begin_src lisp
   (ql:quickload :definition)
+  (in-package   :definition)
 #+end_src
+
+#+RESULTS:
+: #<PACKAGE "DEFINITION">
 
 #+html:<br><br>
 
@@ -124,7 +133,7 @@ From local project (for example: =~/quicklisp=)
 #+begin_src lisp :exports both
   (macroexpand
 
-   '(def:%defun func-1 ()
+   '(%defun func-1 ()
      (+ 1 2 3)))
 #+end_src
 
@@ -144,7 +153,7 @@ From local project (for example: =~/quicklisp=)
 #+begin_src lisp :exports both
   (macroexpand
 
-   '(def:%defun func-2 (x y &optional (z 0))
+   '(%defun func-2 (x y &optional (z 0))
      (+ x y z)))
 #+end_src
 
@@ -166,13 +175,13 @@ From local project (for example: =~/quicklisp=)
 #+begin_src lisp :exports both
   (macroexpand
 
-   '(def:%defun func-3 (() -> nil)
+   '(%defun func-3 (() -> nil)
      (pprint "Not return")))
 #+end_src
 
 #+RESULTS:
 : (PROGN
-:  (DECLAIM (FTYPE NIL (VALUES &OPTIONAL) FUNC-3))
+:  (DECLAIM (FTYPE (FUNCTION NIL (VALUES &OPTIONAL)) FUNC-3))
 :  (DEFUN FUNC-3 () (PPRINT "Not return")))
 : T
 
