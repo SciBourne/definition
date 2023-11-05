@@ -274,7 +274,7 @@ Import names into your package:
 
 #+begin_src lisp :exports code
   (defun my-function ((x 'fixnum y 'fixnum) -> 'fixnum)
-    (+ x y ))
+    (+ x y))
 #+end_src
 
 #+html:<details>
@@ -283,7 +283,7 @@ Import names into your package:
 #+begin_src lisp :exports results
   (macroexpand
    '(defun my-function ((x 'fixnum y 'fixnum) -> 'fixnum)
-     (+ x y )))
+     (+ x y)))
 #+end_src
 
 #+RESULTS:
