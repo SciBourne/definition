@@ -421,7 +421,7 @@ T
                        b 'fixnum
 
                        &rest
-                         rest-plist  ; always T
+                         rest-plist  ; &rest and &body always T
 
                        &key
                          c '(or fixnum null)
@@ -448,7 +448,7 @@ T
                          b 'fixnum
 
                          &rest
-                         rest-plist  ; always T
+                         rest-plist
 
                          &key
                          c '(or fixnum null)
