@@ -139,6 +139,8 @@ Import names into your package:
      (+ 1 2 3)))
 #+end_src
 
+#+html:<details>
+#+html:<summary><b>Result</b></summary>
 #+RESULTS:
 : (PROGN
 :  (EVAL-WHEN (:COMPILE-TOPLEVEL) (SB-C:%COMPILER-DEFUN 'MY-FUNCTION T NIL NIL))
@@ -147,7 +149,7 @@ Import names into your package:
 :                       NIL
 :                     (BLOCK MY-FUNCTION (+ 1 2 3)))))
 : T
-
+#+html:</details>
 #+html:<br>
 
 
