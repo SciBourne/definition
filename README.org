@@ -442,7 +442,7 @@ T
 #+html:<details>
 #+html:<summary><i>macroexpand</i></summary>
 
-#+begin_src lisp :exports value
+#+begin_src lisp :exports results
   (macroexpand
    '(defun my-function ((a 'fixnum
                          b 'fixnum
