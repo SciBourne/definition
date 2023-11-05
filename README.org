@@ -138,11 +138,11 @@ Import names into your package:
 #+end_src
 
 #+html:<details>
-#+html:<summary><i>Macroexpand</i></summary>
+#+html:<summary><i>macroexpand</i></summary>
 
 #+begin_src lisp :exports both
   (macroexpand
-   '(defun my-function ()
+   '(%defun my-function ()
      (+ 1 2 3)))
 #+end_src
 
@@ -156,13 +156,20 @@ Import names into your package:
 : T
 
 #+html:</details>
-#+html:<br>
+#+html:<br></br>
 
 
+
+#+begin_src lisp :exports code
+  (defun my-function (x y &optional (z 0))
+    (+ x y z))
+#+end_src
+
+#+html:<details>
+#+html:<summary><i>macroexpand</i></summary>
 
 #+begin_src lisp :exports both
   (macroexpand
-
    '(%defun my-function (x y &optional (z 0))
      (+ x y z)))
 #+end_src
@@ -176,7 +183,8 @@ Import names into your package:
 :                     (BLOCK MY-FUNCTION (+ X Y Z)))))
 : T
 
-#+html:<br>
+#+html:</details>
+#+html:<br><br>
 
 
 
