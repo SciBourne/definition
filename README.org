@@ -31,10 +31,12 @@ Common Lisp eDSL for type declarations
     - [[#defparameter][Defparameter]]
     - [[#defvar][Defvar]]
   - [[#function-and-macros][Function and macros]]
+    - [[#without-declaration-syntax-(like-ansi-cl-)][Without declaration syntax (like ANSI CL)]]
     - [[#lambda][Lambda]]
     - [[#defun][Defun]]
     - [[#defmethod][Defmethod]]
     - [[#defmacro][Defmacro]]
+    - [[#compiler-options][Compiler options]]
   - [[#lexical-binding][Lexical binding]]
     - [[#let][Let]]
     - [[#prog][Prog]]
@@ -56,10 +58,12 @@ Common Lisp eDSL for type declarations
     - [[Defparameter]]
     - [[Defvar]]
   - [[Function and macros]]
+    - [[Without declaration syntax (like ANSI CL)]]
     - [[Lambda]]
     - [[Defun]]
     - [[Defmethod]]
     - [[Defmacro]]
+    - [[Compiler options]]
   - [[Lexical binding]]
     - [[Let]]
     - [[Prog]]
@@ -129,7 +133,7 @@ Import names into your package:
 
 ** Function and macros
 
-*** Without declarations syntax (like ANSI CL)
+*** Without declaration syntax (like ANSI CL)
 
 #+begin_src lisp :exports code
   (defun my-function ()
