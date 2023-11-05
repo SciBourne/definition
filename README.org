@@ -31,7 +31,7 @@ Common Lisp eDSL for type declarations
     - [[#defparameter][Defparameter]]
     - [[#defvar][Defvar]]
   - [[#function-and-macros][Function and macros]]
-    - [[#without-declaration-syntax-(like-ansi-cl-)][Without declaration syntax (like ANSI CL)]]
+    - [[#without-declaration-syntax-like-ansi-cl][Without declaration syntax (like ANSI CL)]]
     - [[#lambda][Lambda]]
     - [[#defun][Defun]]
     - [[#defmethod][Defmethod]]
