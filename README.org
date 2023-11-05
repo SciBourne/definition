@@ -132,13 +132,20 @@ Import names into your package:
 
 **** Without declarations (default)
 
-#+begin_src lisp :exports both
+#+begin_src lisp :exports code
   (defun my-function ()
     (+ 1 2 3))
 #+end_src
 
 #+html:<details>
 #+html:<summary><b>Macroexpand</b></summary>
+
+#+begin_src lisp :exports both
+  (macroexpand
+   '(defun my-function ()
+     (+ 1 2 3)))
+#+end_src
+
 #+RESULTS:
 : (PROGN
 :  (EVAL-WHEN (:COMPILE-TOPLEVEL) (SB-C:%COMPILER-DEFUN 'MY-FUNCTION T NIL NIL))
@@ -147,6 +154,7 @@ Import names into your package:
 :                       NIL
 :                     (BLOCK MY-FUNCTION (+ 1 2 3)))))
 : T
+
 #+html:</details>
 #+html:<br>
 
