@@ -129,14 +129,7 @@ Import names into your package:
 
 ** Function and macros
 
-*** Lambda
-
-#+html:<br>
-
-
-*** Defun
-
-**** Without declarations (default)
+*** Without declarations syntax (like ANSI CL)
 
 #+begin_src lisp :exports code
   (defun my-function ()
@@ -194,8 +187,13 @@ Import names into your package:
 #+html:<br><br>
 
 
+*** Lambda
 
-**** With declaration
+#+html:<br>
+
+
+
+*** Defun
 
 #+begin_src lisp :exports code
   (defun my-function (() -> nil)
@@ -510,6 +508,121 @@ T
 *** Defmacro
 
 #+html:<br><br>
+
+
+
+*** Compiler options
+
+#+begin_src lisp :exports code
+  (defun my-function ((x 'fixnum y 'fixnum &optional z 'fixnum)
+
+                      :ignore z
+                      :optimize (speed 3)
+
+                      -> 'fixnum)
+    (+ x y))
+#+end_src
+
+#+html:<details>
+#+html:<summary><i>macroexpand</i></summary>
+
+#+begin_src lisp :exports results
+  (macroexpand
+   '(defun my-function ((x 'fixnum y 'fixnum &optional z 'fixnum)
+
+                        :ignore z
+                        :optimize (speed 3)
+
+                        -> 'fixnum)
+     (+ x y)))
+#+end_src
+
+#+RESULTS:
+#+begin_example
+(PROGN
+ (DECLAIM
+  (FTYPE (FUNCTION (FIXNUM FIXNUM &OPTIONAL FIXNUM) (VALUES FIXNUM &OPTIONAL))
+   MY-FUNCTION))
+ (COMMON-LISP:DEFUN MY-FUNCTION (X Y &OPTIONAL Z)
+   (DECLARE (TYPE FIXNUM X)
+            (TYPE FIXNUM Y)
+            (TYPE FIXNUM Z)
+            (OPTIMIZE (SPEED 3))
+            (IGNORE Z))
+   (+ X Y)))
+T
+#+end_example
+
+#+html:</details>
+#+html:<br><br>
+
+
+
+#+begin_src lisp :exports code
+  (defun my-function ((*sum* 'fixnum x 'fixnum y 'fixnum k 'cons)
+
+                      :inline *
+                      :notinline (+ -)
+
+                      :special *sum*
+                      :dynamic-extent k
+
+                      :optimize ((debug 3)
+                                 (safety 3)
+                                 (speed 0)
+                                 (space 1))
+
+                      -> nil)
+
+    (setf *sum* (+ (- (* x (first k)) 1) (* y (second k)))))
+#+end_src
+
+#+html:<details>
+#+html:<summary><i>macroexpand</i></summary>
+
+#+begin_src lisp :exports results
+  (macroexpand
+   '(defun my-function ((*sum* 'fixnum x 'fixnum y 'fixnum k 'cons)
+
+                        :inline *
+                        :notinline (+ -)
+
+                        :special *sum*
+                        :dynamic-extent k
+
+                        :optimize ((debug 3)
+                                   (safety 3)
+                                   (speed 0)
+                                   (space 1))
+
+                        -> nil)
+
+     (setf *sum* (+ (- (* x (first k)) 1) (* y (second k))))))
+#+end_src
+
+#+RESULTS:
+#+begin_example
+(PROGN
+ (DECLAIM
+  (FTYPE (FUNCTION (FIXNUM FIXNUM FIXNUM CONS) (VALUES &OPTIONAL))
+   MY-FUNCTION))
+ (COMMON-LISP:DEFUN MY-FUNCTION (*SUM* X Y K)
+   (DECLARE (TYPE FIXNUM *SUM*)
+            (TYPE FIXNUM X)
+            (TYPE FIXNUM Y)
+            (TYPE CONS K)
+            (OPTIMIZE (DEBUG 3) (SAFETY 3) (SPEED 0) (SPACE 1))
+            (INLINE *)
+            (NOTINLINE + -)
+            (SPECIAL *SUM*)
+            (DYNAMIC-EXTENT K))
+   (SETF *SUM* (+ (- (* X (FIRST K)) 1) (* Y (SECOND K))))))
+T
+#+end_example
+
+#+html:</details>
+#+html:<br><br>
+
 
 
 
