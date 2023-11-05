@@ -138,7 +138,7 @@ Import names into your package:
 #+end_src
 
 #+html:<details>
-#+html:<summary>Macroexpand</summary>
+#+html:<summary><i>Macroexpand</i></summary>
 
 #+begin_src lisp :exports both
   (macroexpand
