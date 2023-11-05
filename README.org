@@ -76,17 +76,17 @@ Common Lisp eDSL for type declarations
 * Install
 
 Clone this package into your local project dir (by default: =~/quicklisp/local-projects/=)
-#+begin_src shell
+#+begin_src shell :exports code
   git clone https://github.com/SciBourne/definition.git
 #+end_src
 
 Check:
-#+begin_src lisp
+#+begin_src lisp :exports code
   (ql:quickload :definition)
 #+end_src
 
 Import names into your package:
-#+begin_src lisp
+#+begin_src lisp :exports code
   (defpackage :my-package
     (:shadowing-import-from #:def
                             #:defun)
@@ -146,7 +146,7 @@ Import names into your package:
 #+html:<details>
 #+html:<summary><i>macroexpand</i></summary>
 
-#+begin_src lisp :exports both
+#+begin_src lisp :exports results
   (macroexpand
    '(defun my-function ()
      (+ 1 2 3)))
@@ -175,7 +175,7 @@ Import names into your package:
 #+html:<details>
 #+html:<summary><i>macroexpand</i></summary>
 
-#+begin_src lisp :exports both
+#+begin_src lisp :exports results
   (macroexpand
    '(defun my-function (x y &optional (z 0))
      (+ x y z)))
@@ -197,7 +197,7 @@ Import names into your package:
 
 **** With declaration
 
-#+begin_src lisp :exports both
+#+begin_src lisp :exports code
   (defun my-function (() -> nil)
     (pprint "Not return"))
 #+end_src
@@ -205,7 +205,7 @@ Import names into your package:
 #+html:<details>
 #+html:<summary><i>macroexpand</i></summary>
 
-#+begin_src lisp :exports both
+#+begin_src lisp :exports results
   (macroexpand
    '(defun my-function (() -> nil)
      (pprint "Not return")))
@@ -222,7 +222,7 @@ Import names into your package:
 
 
 
-#+begin_src lisp :exports both
+#+begin_src lisp :exports code
   (defun my-function (() -> 'null)
     (format t "Return nil"))
 #+end_src
@@ -230,7 +230,7 @@ Import names into your package:
 #+html:<details>
 #+html:<summary><i>macroexpand</i></summary>
 
-#+begin_src lisp :exports both
+#+begin_src lisp :exports results
   (macroexpand
    '(defun my-function (() -> 'null)
      (format t "Return nil")))
@@ -247,7 +247,7 @@ Import names into your package:
 
 
 
-#+begin_src lisp :exports both
+#+begin_src lisp :exports code
   (defun my-function ((any-arg T) -> T)
     any-arg)
 #+end_src
@@ -255,7 +255,7 @@ Import names into your package:
 #+html:<details>
 #+html:<summary><i>macroexpand</i></summary>
 
-#+begin_src lisp :exports both
+#+begin_src lisp :exports results
   (macroexpand
    '(defun my-function ((any-arg T) -> T)
      any-arg))
@@ -272,7 +272,7 @@ Import names into your package:
 
 
 
-#+begin_src lisp :exports both
+#+begin_src lisp :exports code
   (defun my-function ((x 'fixnum y 'fixnum) -> 'fixnum)
     (+ x y ))
 #+end_src
@@ -280,7 +280,7 @@ Import names into your package:
 #+html:<details>
 #+html:<summary><i>macroexpand</i></summary>
 
-#+begin_src lisp :exports both
+#+begin_src lisp :exports results
   (macroexpand
    '(defun my-function ((x 'fixnum y 'fixnum) -> 'fixnum)
      (+ x y )))
@@ -301,7 +301,7 @@ Import names into your package:
 
 
 
-#+begin_src lisp :exports both
+#+begin_src lisp :exports code
   (defun my-function ((x 'fixnum y 'fixnum &optional z '(or fixnum null))
                       -> '(or fixnum null))
     (when z (+ x y)))
@@ -310,7 +310,7 @@ Import names into your package:
 #+html:<details>
 #+html:<summary><i>macroexpand</i></summary>
 
-#+begin_src lisp :exports both
+#+begin_src lisp :exports results
   (macroexpand
    '(defun my-function ((x 'fixnum y 'fixnum &optional z '(or fixnum null))
                         -> '(or fixnum null))
@@ -338,7 +338,7 @@ T
 
 
 
-#+begin_src lisp :exports both
+#+begin_src lisp :exports code
   (defun my-function ((x 'fixnum y 'fixnum &aux (z (* x y)) 'fixnum)
                       -> 'fixnum)
     (+ x y z))
@@ -347,7 +347,7 @@ T
 #+html:<details>
 #+html:<summary><i>macroexpand</i></summary>
 
-#+begin_src lisp :exports both
+#+begin_src lisp :exports results
   (macroexpand
    '(defun my-function ((x 'fixnum y 'fixnum &aux (z (* x y)) 'fixnum)
                          -> 'fixnum)
@@ -370,7 +370,7 @@ T
 
 
 
-#+begin_src lisp :exports both
+#+begin_src lisp :exports code
   (defun my-function ((&optional
                          x '(or fixnum null)
                          (y 0) 'fixnum
@@ -383,7 +383,7 @@ T
 #+html:<details>
 #+html:<summary><i>macroexpand</i></summary>
 
-#+begin_src lisp :exports both
+#+begin_src lisp :exports results
   (macroexpand
    '(defun my-function ((&optional
                          x '(or fixnum null)
