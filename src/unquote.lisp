@@ -4,7 +4,7 @@
 
 
 (declaim (ftype (function (cons) (or cons symbol)))
-	 (inline unquote))
+		 (inline unquote))
 
 
 (cl:defun unquote (any)
