@@ -11,7 +11,8 @@
 
   :serial t
   :components ((:file "packages")
-	       (:module "src"
-	        :components ((:file "unquote")
-			     (:file "symbols")
-			     (:file "defun")))))
+			   (:module "src"
+				:components ((:file "unquote")
+							 (:file "symbols")
+							 (:file "defconstant")
+							 (:file "defun")))))
