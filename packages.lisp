@@ -8,9 +8,10 @@
   (:nicknames  #:def)
 
   (:shadow     #:defun
-               #:defmethod)
+               #:defconstant)
 
-  (:export     #:defun))
+  (:export     #:defun
+			   #:defconstant))
 
 
 
